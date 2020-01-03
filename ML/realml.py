@@ -16,7 +16,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 
 # Load dataset
-url = "/Users/optimusprime/Desktop/ML/iris.csv"
+url = '/home/karmanyaahm/Documents/Hackathon/Hyland/Hyland2020/ML/iris.csv'
 names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
 dataset = read_csv(url, names=names)
 
