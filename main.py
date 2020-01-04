@@ -1,30 +1,35 @@
 import algorithm as al
 import weathertest as wt
+import numpy as np
 import csv
 
-cityname = raw_input("What is the (city, state) you're in? ")
+cityname = input("What is the (city, state) you're in? ")
+
+
+
 g = wt.getloc(cityname)
 fcc = wt.fcur(g,int(wt.time.time()))
-print("{}{}{}{}".format(fcc.temperature,fcc.windSpeed,fcc.humidity,wt.time.ctime(fcc.time)))
+print("{}F {}MPH {}% {}".format(fcc.temperature,fcc.windSpeed,fcc.humidity*100,wt.time.ctime(fcc.time)))
 
 
-with open('data.csv', 'w', newline='') as csvfile:
-	spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-	tempBorders = np.array([spamreader[0])
-	lowCounterBoi = spamreader[1][0]
-	medCounterBoi = spamreader[1][1]
-	highCounterBoi = spamreader[1][2]
-	tempOfTheDay = fcc.temperature
-		
-	out = algo(tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi,tempOfTheDay)
+with open('data.csv', 'r', newline='') as csvfile:
+	arr=[]
+	spamreader = csv.reader(csvfile, delimiter=',', quotechar="'",quoting= csv.QUOTE_NONNUMERIC)
+	for i in spamreader:
+		arr.append(i)
 	
+	tempBorders = arr[0]
+	lowCounterBoi = int(arr[1][0])
+	medCounterBoi = int(arr[1][1])
+	highCounterBoi = int(arr[1][2])
+	out = al.algo(tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi,fcc)
+
 	
-	writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-	
+with open('data.csv', 'w', newline='') as csvfile2:		
+	writer = csv.writer(csvfile2, delimiter=',', quotechar="'", quoting=csv.QUOTE_NONNUMERIC)
 	tempBorders = out[0]
 	lowCounterBoi=out[1]
 	medCounterBoi=out[2]
 	highCounterBoi=out[3]
-	
-	writer.writerow([tempBorders])
+	writer.writerow(tempBorders)
 	writer.writerow([lowCounterBoi,medCounterBoi,highCounterBoi])
