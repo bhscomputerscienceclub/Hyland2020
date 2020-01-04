@@ -4,12 +4,11 @@ import numpy as np
 import csv
 
 cityname = input("What is the (city, state) you're in? ")
-
-
-
 g = wt.getloc(cityname)
 fcc = wt.fcur(g,int(wt.time.time()))
-print("{}F {}MPH {}% {}".format(fcc.temperature,fcc.windSpeed,fcc.humidity*100,wt.time.ctime(fcc.time)))
+
+
+
 
 
 with open('data.csv', 'r', newline='') as csvfile:
@@ -23,7 +22,12 @@ with open('data.csv', 'r', newline='') as csvfile:
 	medCounterBoi = int(arr[1][1])
 	highCounterBoi = int(arr[1][2])
 	out = al.algo(tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi,fcc)
+temp = fcc.temperature
+if fcc.temperature <tempBorders[0]:
+	print('error too cold')
+elif fcc.temperature
 
+print("{}F {}MPH {}% {}".format(fcc.temperature,fcc.windSpeed,fcc.humidity*100,wt.time.ctime(fcc.time)))
 	
 with open('data.csv', 'w', newline='') as csvfile2:		
 	writer = csv.writer(csvfile2, delimiter=',', quotechar="'", quoting=csv.QUOTE_NONNUMERIC)
