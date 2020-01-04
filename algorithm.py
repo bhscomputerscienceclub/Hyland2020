@@ -4,12 +4,6 @@ import random
 import numpy as np
 import weathertest as wt
 
-g = wt.getloc('Salt lake city, utah')
-
-fcc = wt.fcur(g,int(wt.time.time()))
-
-
-tempOfTheDay = random.randint(-10,110)
 
 def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, tempOfTheDay):
     print("Hi! How was our advice to you today?")
@@ -58,11 +52,14 @@ def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, tempOfTheDay
 
 
 if __name__ == "__main__":
+    g = wt.getloc('Salt lake city, utah')
+    fcc = wt.fcur(g,int(wt.time.time()))
     tempBorders = np.array([-450,15.00001,40.000001,70.000001,2000])
     lowCounterBoi = 0
     medCounterBoi = 0
     highCounterBoi = 0
     tempOfTheDay = fcc.temperature
+    
     out = algo(tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi,tempOfTheDay)
     tempBorders = out[0]
     lowCounterBoi=out[1]
