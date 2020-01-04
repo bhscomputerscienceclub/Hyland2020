@@ -2,21 +2,20 @@
 import statistics
 import random
 import numpy as np
-#import weather/weathertest.py as wt
-#ok so this is a baseine that we can change:
+import weathertest as wt
 
+g = wt.getloc('Salt lake city, utah')
 
-
-
+fcc = wt.fcur(g,int(wt.time.time()))
 
 
 tempOfTheDay = random.randint(-10,110)
 
-def func(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, tempOfTheDay):
+def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, tempOfTheDay):
     print("Hi! How was our advice to you today?")
     print("Was it 'Too Hot', 'Too Cold' or 'Just Right'?")
 
-    
+
     tempFeeling = input()
 
 
@@ -55,17 +54,21 @@ def func(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, tempOfTheDay
             lowCounterBoi+=1
     else:
         print("invalid option")
-    return tempBorders
+    return [tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi]
 
 
 if __name__ == "__main__":
     tempBorders = np.array([-450,15.00001,40.000001,70.000001,2000])
-    #lowTempTips = 15
-    #medTempTips = 40
-    #highTempTips = 70
     lowCounterBoi = 0
     medCounterBoi = 0
     highCounterBoi = 0
+    tempOfTheDay = fcc.temperature
+    out = algo(tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi,tempOfTheDay)
+    tempBorders = out[0]
+    lowCounterBoi=out[1]
+    medCounterBoi=out[2]
+    highCounterBoi=out[3]
+
     print(tempOfTheDay)
-    print(nearestIndex)
+    print(wt.time.ctime())
     print(lowCounterBoi+medCounterBoi+highCounterBoi)
