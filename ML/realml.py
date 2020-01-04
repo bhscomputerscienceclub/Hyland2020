@@ -16,40 +16,40 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 
 # Load dataset
-url = '/home/karmanyaahm/Documents/Hackathon/Hyland/Hyland2020/ML/iris.csv'
-names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+url = '/home/karmanyaahm/Documents/Hackathon/Hyland/Hyland2020/excalc.csv'
+names = ['temperature', 'humidity', 'wind', 'clothes']
 dataset = read_csv(url, names=names)
 
-"""
+
 #shape
-print(dataset.shape)
+#print(dataset.shape)
 
 #head
-print(dataset.head(20))
+#print(dataset.head(20))
 
 #descriptions
-print(dataset.describe())
+#print(dataset.describe())
 
 # class distribution
-print(dataset.groupby('class').size())
+print(dataset.groupby('clothes').size())
 
 # box and whisker plots
-dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
-pyplot.show()
+#dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+#pyplot.show()
 
 # histograms
 dataset.hist()
 pyplot.show()
 
 # scatter plot matrix
-scatter_matrix(dataset)
-pyplot.show()
-"""
+#scatter_matrix(dataset)
+#pyplot.show()
+
 
 # Split-out validation dataset
 array = dataset.values
-X = array[:,0:4]
-Y = array[:,4]
+X = array[:,0:3]
+Y = array[:,3]
 X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, test_size=0.20, random_state=1)
 
 # Spot Check Algorithms
@@ -79,6 +79,8 @@ pyplot.show()
 model = SVC(gamma='auto')
 model.fit(X_train, Y_train)
 predictions = model.predict(X_validation)
+
+
 
 # Evaluate predictions
 print(accuracy_score(Y_validation, predictions))
