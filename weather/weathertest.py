@@ -12,7 +12,7 @@ with open('ex.csv', 'w', newline='') as csvfile:
     t=1577750400
     for i in range(75):
         
-        fcc = fc(api_key, lat, lng,time = t).currently
+        fcc = fc(api_key, lat, lng,time = t, exclude = minutely, hourly, daily, alerts).currently
         spamwriter.writerow([fcc.temperature,fcc.humidity,fcc.windSpeed,fcc.apparentTemperature])
         t = t - 43200
         fcc = fc(api_key, lat, lng,time = t).currently
