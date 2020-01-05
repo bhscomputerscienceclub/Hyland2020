@@ -11,9 +11,6 @@ class Struct(object):
 			if isinstance(v, dict):
 				self.__dict__[k] = Struct(v)
 
-def get_object(adict):
-		return Struct(adict)
-
 def gowrite(tempFeeling):
 
 	#fcc = wt.fcur(g,int(wt.time.time()))
@@ -34,7 +31,7 @@ def gowrite(tempFeeling):
 		fcc = {}
 		for rows in spamreader:
 			fcc.update({rows[0]:rows[1]})
-		fcc = get_object(fcc)
+		fcc = Struct(fcc)
 		out = algo(tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi,fcc,tempFeeling)
 		
 

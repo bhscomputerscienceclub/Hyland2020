@@ -15,8 +15,8 @@ def goread(cityname):
 	time = int(wt.time.time())
 	fcc = wt.fcur(g,time)
 	fc = wt.fall(g,time)
-
-	with open('data.csv', 'r', newline='') as csvfile:
+	
+	with open('Weather/data.csv', 'r', newline='') as csvfile:
 		arr=[]
 		spamreader = csv.reader(csvfile, delimiter=',', quotechar="'",quoting= csv.QUOTE_NONNUMERIC)
 		for i in spamreader:
@@ -55,7 +55,7 @@ def goread(cityname):
 
 	#out.append("{}F {}MPH {}% {}".format(fcc.temperature,fcc.windSpeed,fcc.humidity*100,wt.time.ctime(fcc.time)))
 		
-	with open('data.csv', 'a', newline='') as csvfile2:		
+	with open('Weather/data.csv', 'a', newline='') as csvfile2:		
 		writer = csv.writer(csvfile2, delimiter=',', quotechar="'", quoting=csv.QUOTE_NONNUMERIC)
 		writer.writerow([g.lat,g.lng,time])
 		writer.writerows(fcc._data.items())
@@ -63,7 +63,4 @@ def goread(cityname):
 
 if __name__ == "__main__":
 	cityname = input("What is the (city, state) you're in? ")
-	g = wt.getloc(cityname)
-	time = int(wt.time.time())
-	fcc = wt.fcur(g,time)
-	fc = wt.fall(g,time)
+	goread(cityname)
