@@ -5,12 +5,12 @@ import numpy as np
 import weathertest as wt
 
 
-def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, fcc, tempFeeling):
-    #print("Hi! How was our advice to you today?")
-    #print("Was it 'Too Hot', 'Too Cold' or 'Just Right'?")
+def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, fcc):
+    print("Hi! How was our advice to you today?")
+    print("Was it 'Too Hot', 'Too Cold' or 'Just Right'?")
 
     tempBorders = np.array(tempBorders)
-    #tempFeeling = input()
+    tempFeeling = input()
     n = fcc.temperature+4*fcc.humidity**2-2.5*(fcc.windSpeed**(1/2))
 
 
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     medCounterBoi = 0
     highCounterBoi = 0
     
-    out = algo(tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi,fcc, 'Just Right')
+    out = algo(tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi,fcc)
     tempBorders = out[0]
     lowCounterBoi=out[1]
     medCounterBoi=out[2]

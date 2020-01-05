@@ -1,19 +1,44 @@
 import tkinter as tk
+from read import *
+from write import *
+
  
 window = tk.Tk()
- 
-window.title("Easy Weather")
- 
 window.geometry('750x1334')
- 
-lbl = tk.Label(window, text="Hello", font = ("Arial Bold", 50))
- 
-lbl.grid(column=0, row=0)
+window.title("Easy Weather")
 
-photo1 = tk.PhotoImage(file = "Weather/Buttons/too cold.svg")
+title = tk.Label(window, text = "What is the (city, state) you're in? ")
+title.grid(column = 0, row = 0)
 
-btn = tk.Button(window, image = photo1)
+txt = tk.Entry(window, width = 10)
+txt.grid(column = 1, row = 0)
+
+tip1 = tk.Label(window, text="")
+tip1.grid(column = 0, row = 1)
+
+def calculate():
+    read = []
+    read = goread(str(txt.get()))
+    tip1.configure(text = "A little tip: {}".format(read[0]))
+    
+
+enter = tk.Button(window, width = 4, height = 1, text = "Enter", command = calculate)
+enter.grid(column = 2, row = 0)
+
+
+coldP = tk.PhotoImage(file = "Weather/too cold.png")
+rightP = tk.PhotoImage(file = "Weather/just right.png")
+hotP = tk.PhotoImage(file = "Weather/too hot.png")
+
+
+
+coldB = tk.Button(window, width = 50, height = 50, image = coldP, command = gowrite('Too Cold'))
+rightB = tk.Button(window, width = 50, height = 50, image = rightP, command = gowrite('Just Right'))
+hotB = tk.Button(window, width = 50, height = 50, image = hotP, command = gowrite('Too Hot'))
  
-btn.grid(column=1, row=0)
+coldB.grid(column=0, row=5)
+rightB.grid(column=1, row=5)
+hotB.grid(column=2, row=5)
+
  
 window.mainloop()
