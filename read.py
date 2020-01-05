@@ -7,6 +7,7 @@ cityname = '44122 us' #input("What is the (city, state) you're in? ")
 g = wt.getloc(cityname)
 time = int(wt.time.time())
 fcc = wt.fcur(g,time)
+fc = wt.fall(g,time)
 
 #read prev
 #recomend + give weather
@@ -24,17 +25,32 @@ with open('data.csv', 'r', newline='') as csvfile:
 
 	temp = fcc.temperature
 
+#sunset = fc.sunsetTime
 
 if temp < tempBorders[0]:
 	print('error too cold go get you nobel prize')
 elif temp < tempBorders[1]:
-	print('You need a winter coat, scarf, hat, gloves, and boots')
+	print('Wear a winter coat, scarf, hat, gloves, and boots')
 elif temp < tempBorders[2]:
-	print("You should wear a jacket")
+	print("Wear a light coat or jacket")
 elif temp < tempBorders[3]:
-	print('You should wear a t-shirt')
+	print('Wear a jacket or long sleeved shirt')
+elif temp >= tempBorders[3]:
+	print('Wear a T-shirt or tanktop')
 else:
 	print("error too hot this computer shouldn't be working")
+
+if(fcc.precipType == "rain"):
+	print("It's raining, you should bring an umbrella or a rainjacket")
+
+if(fcc.uvIndex >= 3):
+	print("You should wear sunscreen when going outside")
+
+if((fcc.humidity <= .5 and temp >70) or temp >80):
+	print("It is hot outside, you should bring a waterbottle")
+	
+if(fcc.visibility == 0):
+	print("Be careful while driving")
 
 print("{}F {}MPH {}% {}".format(fcc.temperature,fcc.windSpeed,fcc.humidity*100,wt.time.ctime(fcc.time)))
 	

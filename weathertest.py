@@ -15,6 +15,10 @@ def fcur (g,t):
     api_key = "d1407217196848e8bc7f7a2d815bafa6"
     fcc = fc(api_key, g.lat, g.lng,time = t,units = 'us').currently
     return fcc
+def fall (g,t):
+    api_key = "d1407217196848e8bc7f7a2d815bafa6"
+    fa = fc(api_key, g.lat, g.lng,time = t,units = 'us')
+    return fa
 
 '''
 with open('ex2.csv', 'w', newline='') as csvfile:
