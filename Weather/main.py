@@ -9,7 +9,7 @@ import tzlocal
 time = int(wt.time.time())
 
 window = tk.Tk()
-window.geometry('750x1334')
+window.geometry('750x500')
 window.configure(background='white')
 window.title("ezWeather")
 
@@ -24,8 +24,16 @@ local_time = datetime.fromtimestamp(time, local_timezone)
 hour = str(local_time)[11]+ str(local_time)[12]
 date = str(local_time)[5:10]
 
+morning_pic = tk.PhotoImage(file = "Weather/Background Pics/clear-day.png")
+night_pic = tk.PhotoImage(file = "Weather/Background Pics/clear-night.png")
+time_picture = tk.PhotoImage(file = "")
 
-background_image = tk.PhotoImage(file = "Weather/too cold.png")
+if int(hour) >=6 and int(hour) < 18:
+    time_picture = morning_pic
+else:
+    time_picture = night_pic
+
+background_image = time_picture
 background_label = tk.Label(window, image = background_image)
 background_label.place(x = 0, y = 0, relwidth = 1, relheight = 1)
 
