@@ -7,6 +7,10 @@ window.geometry('750x1334')
 window.configure(background='white')
 window.title("ezWeather")
 
+background_image = tk.PhotoImage(file = "Weather/too cold.png")
+background_label = tk.Label(window, image = background_image)
+background_label.place(x = 0, y = 0, relwidth = 1, relheight = 1)
+
 quote = tk.Label(window, bg = "pink", text = 'Daily Quote: ' + '"Success is a journey not a destination"' + '\n' + '-Ben Sweetland', font = ("Caveat", 20))
 quote.grid(columnspan = 8, row = 8)
 
@@ -66,5 +70,5 @@ prec_value = tk.Label(window, text = "x ", font = ("none", 30))
 date_value.grid(column = 0, row = 11)
 temp_value.grid(column = 2, row = 11)
 prec_value.grid(column = 4, row = 11)
- 
+
 window.mainloop()
