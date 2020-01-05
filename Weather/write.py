@@ -37,7 +37,7 @@ def gowrite(tempFeeling):
 
 	#print("{}F {}MPH {}% {}".format(fcc.temperature,fcc.windSpeed,fcc.humidity*100,wt.time.ctime(fcc.time)))
 		
-	with open('data.csv', 'w', newline='') as csvfile2:		
+	with open('Weather/data.csv', 'w', newline='') as csvfile2:		
 		writer = csv.writer(csvfile2, delimiter=',', quotechar="'", quoting=csv.QUOTE_NONNUMERIC)
 		tempBorders = out[0]
 		lowCounterBoi=out[1]

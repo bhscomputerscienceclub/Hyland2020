@@ -140,10 +140,10 @@ time1234 = tk.Label(window, text = str(timelib.strftime("%H:%M", timelib.gmtime(
 time12345.grid(column = 0, row = 20)
 time1234.grid(column = 0, row = 21)
 
-UV_tab = tk.Label(window, text = "", font = ("none", 20))
+UV_tab = tk.Label(window, text = "", font = ("none", 25))
 UV_tab.grid(column = 0, row = 15)
 
-rain_prob = tk.Label(window, text = "", font = ("none", 20))
+rain_prob = tk.Label(window, text = "", font = ("none", 25))
 rain_prob.grid(column = 4, row = 15)
 
 
