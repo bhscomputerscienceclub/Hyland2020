@@ -9,7 +9,7 @@ def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, fcc):
     print("Hi! How was our advice to you today?")
     print("Was it 'Too Hot', 'Too Cold' or 'Just Right'?")
 
-
+    tempBorders = np.array(tempBorders)
     tempFeeling = input()
     n = fcc.temperature+4*fcc.humidity**2-2.5*(fcc.windSpeed**(1/2))
 
@@ -41,15 +41,17 @@ def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, fcc):
         elif(nearestIndex == 3):
             tempBorders[nearestIndex] = nearestBorder- (nearestBorder - (n))*(0.61**highCounterBoi)
             highCounterBoi+=1
-    elif(tempFeeling == "Just Right" and (tempFeeling >(tempBorders[1] and tempBorders[3]))):
+    elif(tempFeeling == "Just Right" and (n >tempBorders[1] and n < tempBorders[3])):
         medCounterBoi+=1
         if(tempBorders[3] - n < n- tempBorders[1]):
             highCounterBoi+=1
         else:
             lowCounterBoi+=1
+    elif(tempFeeling == "Just Right" and (n <tempBorders[1] or n > tempBorders[3])):
+        pass
     else:
         print("invalid option")
-    return [tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi]
+    return [list(tempBorders),int(lowCounterBoi),int(medCounterBoi),int(highCounterBoi)]
 
 
 if __name__ == "__main__":

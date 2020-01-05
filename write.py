@@ -14,7 +14,6 @@ class Struct(object):
 def get_object(adict):
 	return Struct(adict)
 
-
 #fcc = wt.fcur(g,int(wt.time.time()))
 
 with open('data.csv', 'r', newline='') as csvfile:
@@ -23,7 +22,6 @@ with open('data.csv', 'r', newline='') as csvfile:
 	j = 2
 	for i in spamreader:
 		arr.append(i)
-		
 		j-=1
 		if j == 0:
 			break

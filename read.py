@@ -40,11 +40,11 @@ elif temp >= tempBorders[3]:
 else:
 	print("error too hot this computer shouldn't be working")
 
-if(fcc.precipType == "rain"):
-	print("It's raining, you should bring an umbrella or a rainjacket")
+#if(fcc.precipType == "rain"):
+#	print("It's raining, you should bring an umbrella or a rainjacket")
 
-if(fcc.uvIndex >= 3):
-	print("You should wear sunscreen when going outside")
+#if(fcc.uvIndex >= 3):
+#T	print("You should wear sunscreen when going outside")
 
 if((fcc.humidity <= .5 and temp >70) or temp >80):
 	print("It is hot outside, you should bring a waterbottle")
