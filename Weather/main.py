@@ -7,8 +7,8 @@ window.geometry('750x1334')
 window.configure(background='white')
 window.title("ezWeather")
 
-quote = tk.Label(window, bg = "pink", text = '"Success is a journey not a destination"' + '\n' + '-Ben Sweetland')
-quote.grid(column = 0, row = 8)
+quote = tk.Label(window, bg = "pink", text = 'Daily Quote: ' + '"Success is a journey not a destination"' + '\n' + '-Ben Sweetland', font = ("Caveat", 20))
+quote.grid(columnspan = 8, row = 8)
 
 #read part
 title = tk.Label(window, text = "What is the (city, state) you're in? ")
@@ -17,7 +17,7 @@ title.grid(column = 0, row = 0)
 txt = tk.Entry(window, width = 10)
 txt.grid(column = 1, row = 0)
 
-tip1 = tk.Label(window, text="", font = ("roboto", 10))
+tip1 = tk.Label(window, text="", font = ("Roboto", 10))
 tip1.grid(column = 0, row = 1)
 
 def calculate():
@@ -38,15 +38,15 @@ question1 = tk.Label(window, text = "What do you think about the tips?")
 question1.grid(column = 0, row = 5)
 
 thank = tk.Label(window, text = "")
-thank.grid(colum = 0, row = 6)
+thank.grid(column = 0, row = 6)
 
 def feedback(something):
     gowrite(something)
     thank.configure(text = "Thank you for your feedback!")
 
-coldB = tk.Button(window, width = 50, height = 50, image = coldP, command = feedback('Too Cold'))
-rightB = tk.Button(window, width = 50, height = 50, image = rightP, command = feedback('Just Right'))
-hotB = tk.Button(window, width = 50, height = 50, image = hotP, command = feedback('Too Hot'))
+coldB = tk.Button(window, width = 50, height = 50, image = coldP, command = feedback("Too Cold"))
+rightB = tk.Button(window, width = 50, height = 50, image = rightP, command = feedback("Just Right"))
+hotB = tk.Button(window, width = 50, height = 50, image = hotP, command = feedback("Too Hot"))
  
 coldB.grid(column = 1, row = 5)
 rightB.grid(column = 2, row = 5)
