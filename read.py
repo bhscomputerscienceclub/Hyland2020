@@ -3,7 +3,7 @@ import weathertest as wt
 import numpy as np
 import csv
 
-cityname = '44122 us' #input("What is the (city, state) you're in? ")
+cityname = input("What is the (city, state) you're in? ")
 g = wt.getloc(cityname)
 time = int(wt.time.time())
 fcc = wt.fcur(g,time)
