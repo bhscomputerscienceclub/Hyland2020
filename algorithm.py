@@ -8,10 +8,10 @@ import weathertest as wt
 def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, fcc):
     print("Hi! How was our advice to you today?")
     print("Was it 'Too Hot', 'Too Cold' or 'Just Right'?")
+
+
     tempFeeling = input()
-    tempBorders = np.array(tempBorders)
-    
-    n = fcc.temperature+5*fcc.humidity**2-2*(fcc.windSpeed**(1/2))
+    n = fcc.temperature+4*fcc.humidity**2-2.5*(fcc.windSpeed**(1/2))
 
 
 
@@ -33,13 +33,13 @@ def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, fcc):
         nearestIndex = np.where(tempBorders==nearestBorder)[0][0]
 
         if(nearestIndex == 1):
-            tempBorders[nearestIndex] = nearestBorder - (nearestBorder - (n))*(0.5**lowCounterBoi)
+            tempBorders[nearestIndex] = nearestBorder - (nearestBorder - (n))*(0.61**lowCounterBoi)
             lowCounterBoi+=1
         elif(nearestIndex == 2):
-            tempBorders[nearestIndex] = nearestBorder - (nearestBorder - (n))*(0.5**medCounterBoi)
+            tempBorders[nearestIndex] = nearestBorder - (nearestBorder - (n))*(0.61**medCounterBoi)
             medCounterBoi+=1
         elif(nearestIndex == 3):
-            tempBorders[nearestIndex] = nearestBorder- (nearestBorder - (n))*(0.5**highCounterBoi)
+            tempBorders[nearestIndex] = nearestBorder- (nearestBorder - (n))*(0.61**highCounterBoi)
             highCounterBoi+=1
     elif(tempFeeling == "Just Right" and (tempFeeling >(tempBorders[1] and tempBorders[3]))):
         medCounterBoi+=1
@@ -49,13 +49,13 @@ def algo(tempBorders, lowCounterBoi, medCounterBoi, highCounterBoi, fcc):
             lowCounterBoi+=1
     else:
         print("invalid option")
-    return [list(tempBorders),int(lowCounterBoi),int(medCounterBoi),int(highCounterBoi)]
+    return [tempBorders,lowCounterBoi,medCounterBoi,highCounterBoi]
 
 
 if __name__ == "__main__":
     g = wt.getloc('Salt lake city, utah')
     fcc = wt.fcur(g,int(wt.time.time()))
-    tempBorders = np.array([-450,15.00001,40.000001,70.000001,2000])
+    tempBorders = np.array([-450,15.000001, 40.000001, 70.000001,2000])
     lowCounterBoi = 0
     medCounterBoi = 0
     highCounterBoi = 0
@@ -67,6 +67,6 @@ if __name__ == "__main__":
     highCounterBoi=out[3]
 
     print(fcc.temperature)
-    print(fcc.temperature+5*fcc.humidity**2-2*(fcc.windSpeed**(1/2)))
+    print(fcc.temperature+4*fcc.humidity**2-2.5*(fcc.windSpeed**(1/2)))
     print(wt.time.ctime())
     print(lowCounterBoi+medCounterBoi+highCounterBoi)
