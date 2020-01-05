@@ -18,7 +18,7 @@ def gowrite(tempFeeling):
 
 	#fcc = wt.fcur(g,int(wt.time.time()))
 
-	with open('data.csv', 'r', newline='') as csvfile:
+	with open('Weather/data.csv', 'r', newline='') as csvfile:
 		arr=[]
 		spamreader = csv.reader(csvfile, delimiter=',', quotechar="'", quoting= csv.QUOTE_NONNUMERIC)
 		j = 2
