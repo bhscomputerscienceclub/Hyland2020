@@ -17,10 +17,10 @@ window.title("ezWeather")
 #def get_digit(number, n):
 #   return number // 10**n % 10
 #window.root.wm_attributes('-transparentcolor','black')
-print(datetime.utcfromtimestamp(time))
-'''
+#print(datetime.utcfromtimestamp(time))
 local_timezone = tzlocal.get_localzone() # get pytz timezone
 local_time = datetime.fromtimestamp(time, local_timezone)
+'''
 #hour
 hour = str(local_time)[11]+ str(local_time)[12]
 date = str(local_time)[5:10]'''
@@ -46,7 +46,7 @@ title.grid(column = 0, row = 0)
 txt = tk.Entry(window, width = 10)
 txt.grid(column = 1, row = 0)
 
-tip1 = tk.Label(window, text="", font = ("Roboto", 30))
+tip1 = tk.Label(window, text="", font = ("Roboto", 27))
 tip1.grid(columnspan = 8, row = 14)
 
 temperature = 0
@@ -66,10 +66,13 @@ def calculate():
     fcc = wt.fcur(wt.getloc(txt.get()),time) 
     temperature = fcc.temperature
     temp_value.configure(text = str(temperature) + " degrees")
-    if fcc.precipProbability > .2:
+    if fcc.precipProbability >= 0.3:
         prec_image = yes_pre
+        rain_prob.configure(text = "Bring an Umbrella!")
     else:
         prec_image = no_pre
+        rain_prob.configure(text = "Enjoy Yourself!")
+
     prec_value.configure(image = prec_image)
     time_picture.configure(file =  "Weather/Background Pics/{}.png".format(fcc.icon))
     #hour = str(timelib.strftime("%H", timelib.gmtime(time)))
@@ -77,6 +80,13 @@ def calculate():
         time_picture = morning_pic
     else:
         time_picture = night_pic'''
+    
+    if fcc.uvIndex >= 3:
+        UV_tab.configure(text = "Use Sunscreen!")
+    else:
+        UV_tab.configure(text = "Enjoy Yourself!")
+
+
    
 
 enter = tk.Button(window, width = 4, height = 1, text = "Enter", command = calculate)
@@ -84,7 +94,7 @@ enter.grid(column = 2, row = 0)
 
 
 quote = tk.Label(window, bg = "pink", text = 'Daily Quote: ' + '"Success is a journey not a destination"' + '\n' + '-Ben Sweetland', font = ("Caveat", 20))
-quote.grid(columnspan = 8, row = 40)
+quote.grid(columnspan = 8, row = 25)
 
 #write part
 coldP = tk.PhotoImage(file = "Weather/too cold.png")
@@ -114,20 +124,27 @@ hotB.grid(column = 3, row = 16)
 date1 = tk.Label(window, text = "Date", font = ("none", 20))
 temp1 = tk.Label(window, text = "Temperature", font = ("none", 20))
 prec1 = tk.Label(window, text = "Precipitation", font = ("none", 20))
-date1.grid(column = 0, row = 10)
-temp1.grid(column = 2, row = 10)
-prec1.grid(column = 4, row = 10)
+date1.grid(column = 0, row = 28)
+temp1.grid(column = 2, row = 28)
+prec1.grid(column = 4, row = 28)
 
 date_value = tk.Label(window, text = str(timelib.strftime("%m-%d", timelib.gmtime(time))), font = ("none", 30))
 temp_value = tk.Label(window, text = str(temperature) + " degree", font = ("none", 30))
 prec_value = tk.Label(window, image = prec_image)
-date_value.grid(column = 0, row = 11)
-temp_value.grid(column = 2, row = 11)
-prec_value.grid(column = 4, row = 11)
+date_value.grid(column = 0, row = 30)
+temp_value.grid(column = 2, row = 30)
+prec_value.grid(column = 4, row = 30)
 
 time12345 = tk.Label(window, text = "Time: ", font = ("none", 15))
 time1234 = tk.Label(window, text = str(timelib.strftime("%H:%M", timelib.gmtime(time))), font = ("none", 15))
 time12345.grid(column = 0, row = 20)
 time1234.grid(column = 0, row = 21)
+
+UV_tab = tk.Label(window, text = "", font = ("none", 20))
+UV_tab.grid(column = 0, row = 15)
+
+rain_prob = tk.Label(window, text = "", font = ("none", 20))
+rain_prob.grid(column = 4, row = 15)
+
 
 window.mainloop()
