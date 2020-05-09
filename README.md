@@ -41,8 +41,8 @@ The participants included
 * Kai Zheng @kaiz715
 * Michael Karpov @michaeldk975
 
-The project was called EZWeather and was coded with python, tkinter, DarkSky(for weather) and Open Street Map (to parse address).
-EZWeather helps recommend clothing to people based on Weather. It was originally meant to use simple classification machine learning but ended up using a custom 'algorithm' which adapts to the user's preferences.
+The project was called EZWeather and was coded with python, tkinter, DarkSky(for weather) and Open Street Map (to parse addresses).
+EZWeather helps recommend clothing to people based on the weather. It was originally meant to use simple classification machine learning but ended up using a custom 'algorithm' which adapts to the user's preferences.
 
 All code is in the Weather folder.
 
