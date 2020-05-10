@@ -54,3 +54,8 @@ Screenshots:
 ![alt text](https://github.com/Beachwood-High-School/Hyland2020/blob/master/screenshots/breezedark_weather.png "Breeze Dark theme, app showing weather")
 
 I know, it looks bad as it wasn't made to be responsive. This was originally coded on Mac OS (Mojave, I believe) on a 'Retina' display but these screenshots are with Breeze Dark and Breeze themes on KDE Plasma on a 1080p display.
+
+Installation:
+don't install this, it's bad
+darkskylib, geocoder, tkinter were some of the libraries used if you're still interested
+And use your own dark sky api key in Weather/weathertest.py
